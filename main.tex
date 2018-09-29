@@ -1,0 +1,86 @@
+\documentclass[thesis]{SJSUthesis}
+
+% Some very useful LaTeX packages include:
+\usepackage[pdftex]{graphicx} % Used to include figures and pictures in the article
+% declare the path(s) where your graphic files are
+\graphicspath{{./img/}{./figures/}}
+% and their extensions so you won't have to specify these with
+% every instance of \includegraphics
+\DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\usepackage{algorithm} % Used for writing algorithms in an article
+\usepackage[noend]{algpseudocode} % Allows psuedocode keywords (e.g., "if", "while", "for", etc.) in algorithms.
+\usepackage{multirow,array} % Matrices and multi-line number structures
+\usepackage[export]{adjustbox} % Also loads graphicx if not already loaded
+\usepackage{epsfig} % Allow postscript graphics files
+\usepackage{amsmath, amsthm, amsfonts, amssymb, amsxtra, amsopn} % Math
+\usepackage{mathptmx} % Assumes new font selection scheme installed
+\usepackage{float} % Manage floats
+\usepackage{tabularx, booktabs, longtable, booktabs, makecell} % Tables
+\usepackage{xcolor, colortbl} % Used for coloring text and the cells of tables
+\usepackage{cmap} % Build character maps for generated PDF files
+\usepackage{textcomp} % Required for upquote
+\usepackage{listings} % Used for printing source code in articles
+\usepackage[shortcuts]{extdash} % Allow the use of unbreakable "extdash" spacers.
+\usepackage{gensymb} % Used for symbols, such as \degree
+\usepackage{enumitem} % Manage item lists
+% Do not add extra space around itemizes
+\setlist[itemize]{noitemsep, topsep=0pt}
+% Right-aligned column in tabularx
+\newcolumntype{Y}{>{\raggedleft\arraybackslash}X}
+
+
+% new commands
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\renewcommand{\vec}[1]{\mathbf{#1}}
+\def\eg{\emph{e.g.}}
+
+
+
+% Title
+\title{Thesis Title}
+
+% Author
+\author{Author Name}
+
+% Committee members
+% Enter as \committee{Member Name, Designation}{Department}. Advisor should be the first committee member.
+% e.g., \committee{David C. Anastasiu, Ph.D.}{Department of Computer Engineering}
+\committee{Advisor Name, Ph.D.}{Department of Computer Engineering}
+\committee{Committee Member Name, Ph.D.}{Department of Committee Member}
+\committee{Committee Member Name, Ph.D.}{Department of Committee Member}
+
+% Graduation month [[ Defaults to May ]]
+\graduationmonth{May}
+
+% Copyright/Graduation year [[ Defaults to current year]]
+% \copyrightyear{2018}
+
+% Include optional acknowledgments from file acknowledgments.tex  [[ Comment out if not needed ]]
+%   Either acknowledgments or dedication page is recommended.
+\acknowledgments{acknowledgments}
+
+% Include optional acknowledgments from file acknowledgments.tex  [[ Uncomment if needed. ]]
+%   Either acknowledgments or dedication page is recommended.
+% \dedication{dedication}
+
+% Include optional abbreviations from file abbreviations.tex. [[ Uncomment if needed. ]]
+% \abbreviations{abbreviations}
+
+% Include optional appendices from file appendices.tex. [[ Uncomment if needed. ]]
+\appendices{appendices}
+
+
+
+
+
+
+
+
+\begin{document}
+%
+% Nothing should be added here. Instead, edit the files
+% abstract.tex, acknwledgements.tex, abbreviations.tex, sections.tex, and appendices.tex, 
+% and comment/uncomment the appropriate preamble macros as necessary.
+% Note that the sections.tex and abstract.tex are mandatory. 
+%
+\end{document}
