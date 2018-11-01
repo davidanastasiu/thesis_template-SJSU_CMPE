@@ -463,7 +463,7 @@
 
   % Redefine \bibliographystyle and \bibliography to do nothing 
   % They should not be used by the user.
-  \bibliographystyle{IEEEtran}
+  \bibliographystyle{IEEEtranS}
   \def\bibliographystyle#1{}
   \let \SJSUbibliography \bibliography
   \def\bibliography#1{}
@@ -483,7 +483,7 @@
 \RequirePackage{tocbasic}
 
 \renewcommand\@dotsep{1}
-\setcounter{tocdepth}{3}
+\setcounter{tocdepth}{4}
 \renewcommand*\l@section{%
     \vspace{\baselineskip}
 	\@dottedtocline{1}{0.25in}{0.25in}
@@ -492,13 +492,13 @@
 	\@dottedtocline{2}{0.5in}{0.5in}
     }
 \renewcommand*\l@subsubsection{
-	\@dottedtocline{3}{0.75in}{0.75in}
+	\@dottedtocline{3}{0.75in}{0.6in}
     }
 \renewcommand*\l@paragraph{
-	\@dottedtocline{4}{1.00in}{1.00in}
+	\@dottedtocline{4}{1.00in}{0.7in}
     }
 \renewcommand*\l@subparagraph{
-	\@dottedtocline{5}{1.25in}{1.25in}
+	\@dottedtocline{5}{1.25in}{1.0in}
     }
 \def\tableofcontents{%
 	\section*{\centering\normalfont{\MakeUppercase\contentsname}\vspace{-1em}}%
@@ -757,8 +757,8 @@
   \pagestyle{empty}
   \vspace*{-1.5\baselineskip}
   \section*{\centering {\normalfont\normalsize\singlespace ABSTRACT\\
-  			\vspace{\baselineskip} \MakeUppercase{\@title}\\ 
-            \vspace{0.5\baselineskip} by \@author\vspace{0.5\baselineskip}}}
+  			\vspace{0.5\baselineskip} \MakeUppercase{\@title}\\ 
+            by \@author}}
   \input{\@abstract}
 }}
 
@@ -767,7 +767,7 @@
   \newpage
   \pagestyle{plain}
   \vspace*{-1.5\baselineskip}
-  \section*{\centering{\normalfont\normalsize ACKNOWLEDGMENTS\vspace{0.5\baselineskip}}}
+  \section*{\centering{\normalfont\normalsize ACKNOWLEDGMENTS}}
   \input{\@acknowledgments}
 }}
 
@@ -776,7 +776,7 @@
   \newpage
   \pagestyle{plain}
   \vspace*{-1.5\baselineskip}
-  \section*{\centering{\normalfont\normalsize DEDICATION\vspace{0.5\baselineskip}}}
+  \section*{\centering{\normalfont\normalsize DEDICATION}}
   \input{\@dedication}
 }}
 
@@ -785,7 +785,7 @@
   \newpage
   \pagestyle{plain}
   \vspace*{-1.5\baselineskip}
-  \section*{\centering{\normalfont\normalsize LIST OF ABBREVIATIONS\vspace{0.5\baselineskip}}}
+  \section*{\centering{\normalfont\normalsize LIST OF ABBREVIATIONS}}
   \input{\@abbreviations}
   \addcontentsline{toc}{section}{List of Abbreviations}
 }}
@@ -802,7 +802,7 @@
   \newpage
   \pagestyle{plain}
   \vspace*{-1.5\baselineskip}
-  \section*{\centering{\normalfont\normalsize PREFACE\vspace{0.5\baselineskip}}}
+  \section*{\centering{\normalfont\normalsize PREFACE}}
   \addcontentsline{toc}{section}{Preface}
   \input{\@preface}
 }}

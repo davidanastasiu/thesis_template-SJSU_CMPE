@@ -1,30 +1,220 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{sec:introduction}
-This is an example citation for a work by Anastasiu and Karypis~\cite{anastasiu-dsaa2016}. Note the non-breaking space character (\textasciitilde) between the word before the citation and the \textit{{\textbackslash}cite} command. It gets translated into a space, and does not allow \LaTeX~ to print the citation on a different line than the word it is connected to. This, of course, does not work if you put a space between the word and the non-breaking space character, e.g., ``Karypis \textasciitilde{\textbackslash}cite\{anastasiu-dsaa2016\}".
+``SJSUthesis" is a LaTeX class created by David C. Anastasiu for Masters thesis authors from the College of Engineering (CoE) at San Jos\'{e} State University (SJSU). It follows the current Graduate and Undergraduate Programs (GUP) thesis guidelines, currently found at \url{http://www.sjsu.edu/gup/gradstudies/thesis/index.html}, and attempts to simplify the formatting of theses for students. Students should, however, read the current GUP requirements carefully and rectify any style discrepancies before submitting their theses. Additionally, note that GUP is very strict on grammar and spelling mistakes.
+
+The present ``thesis" serves as a visual example of what the finished thesis product should look like. In addition, it provides some guidance on how to use the SJSUthesis style, the provided LaTeX template project, and LaTeX in general to produce a quality thesis that complies with GUP requirements. LaTeX, in combination with the provided style, automate many of the style aspects of the thesis, as long as students do not modify the style of introduce new style elements manually in the text. For example, one can make all section titles bold by simply putting the text within a \texttt{{\textbackslash}textbf} block. However, that would break the style and cause the thesis to be returned for edits by GUP. Students are thus, once again, urged to refrain from style modifications and to double-check style compliance against the GUP thesis guide before submitting their theses.
+
+Throughout the thesis, we will make use of tables and figures from some of my own papers and my students' theses. These tables and figures will likely be taken out of context and should not be considered relevant to the topic of this thesis. They are simply provided as examples for how to properly include these elements in a thesis document.
+
+The remainder of this thesis is structured as follows. First, in Chapter~\ref{sec:literature_review}, we will introduce the reader to the task of reviewing literature that is relevant to the chosen topic of study, with the goal of identifying the current state-of-the-art method or system that potentially solves the problem at hand. This is the basis of all research projects, as we should not ``re-invent the wheel" and try not to repeat mistakes made by others. Chapter~\ref{sec:appropriate_label} introduces an example of other chapters one may include in the thesis. Chapter~\ref{sec:latex} serves as a brief introduction to writing documents in the TeX macro language. We provide a list of writing tips, generally collected from correcting student theses over the years, in Chapter~\ref{sec:writing}. Finally, Chapter~\ref{sec:future_work} describes to-do items envisioned for this project and Chapter~\ref{sec:conclusions} concludes this thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Literature Review}\label{sec:literature_review}
 
+\subsection{How to Write a Literature Review}\label{sec:literature_review:howto}
+
+This chapter will contain some practical advice for starting the research journey by finding the state-of-the-art for the project at hand. However, until we have time to write this chapter, we are including some related works form an in-progress project.
+
+In this chapter, we review some supervised and unsupervised techniques that are used to identify human activities using mobile sensor data. Additionally, we review some methods that can help identify appropriate features that need to be extracted from the raw sensor data to better identify activity patterns.
+
+\subsection{Activity Recognition}
+Appropriate datasets are hard to find for human activity recognition (HAR) research, which lead many authors to collect their own data using several sensors. Chen and Shen~\cite{chen2017} presented performance analysis based on the placement of smartphones on various parts of a subject's body. In their data collection phase, they captured data from a combination of different sensors, e.g., only accelerometer versus combined accelerometer and gyroscope, from smartphones attached to the forearm, abdomen, or legs of the subject, with the ultimate goal of classifying the type of activity being performed.
+%%
+Su et al.~\cite{su2014} computed features in two different domains: time and frequency. In the time domain, they calculated mean, max-min, standard deviation, correlation, and signal magnitude area (SMA). In the frequency domain, they calculated energy, entropy, binned distribution, and the time difference between peaks. They tested a number of supervised learning methods for activity recognition, such as using decision tree, na\"{i}ve Bayes, and support vector machine (SVM) classification models. 
+
+% \subsection{Supervised Approaches}
+Anguita et al.~\cite{anguita2013} focused on labeled data collection using built-in smartphone sensors (accelerometer, gyroscope at 50Hz) with six predefined activity labels. To validate the quality of the dataset, they used the SVM classifier, after filtering noise, and feature mapping to a randomly-split test/train dataset. Kim et al.~\cite{kim2010} summarized pattern discovery in supervised HAR approaches, including hidden Markov model (HMM), linear chain conditional random fields (CRF), and skip-chain CRF (SCCRF).
+% \subsection{Unsupervised Approaches}
+Several approaches have been devised for unsupervised learning for human activity recognition. Bhattacharya et al.~\cite{bhattacharya2014} and Li et al.~\cite{yongmou2014} compared sparse encoding and principle component analysis (PCA) for activity recognition from unlabeled sensor data and found sparse encoding to be better. In~\cite{yongmou2014}, Li et al. also compared denoising autoencoder (DAE) and fast fourier transform (FFT) techniques for feature extraction and found sparse autoencoder to provide better results than other techniques.
+
+Chamroukhi et al.~\cite{chamroukhi2013} described a method to identify hidden discrete logistic processes that maximize the likelihood of data being observed, which they trained via a dedicated expectation maximization (EM) algorithm. Similarity, Kwon et al.~\cite{kwon2014} compared various clustering algorithms for labeling a mixed bag of known and unknown activities. Results showed that given a number of activities, GMM seems to outperform $k$-means and hierarchical clustering for a given known number of activities, but DBSCAN~\cite{ester1996} proved the best choice when the number of activities is unknown.
+
+Wang et al.~\cite{wang2014} discussed linear dynamical systems for human activity recognition, which uses $k$-medoids clustering and a bag-of-systems (BoS) to predict activities involving motion, such as jumping and running. Ronao and Cho~\cite{ronao2015} proposed using a deep convolutional neural networks (DCNN) to extract features from the time series data. They found that, as the number of layers increases, the classification performance improved but the complexity of derived features decreased. Analysis of additional algorithms showed that DCNNs with hand designed features yield better results. Gjoreski and Roggen~\cite{gjoreski2017} proposed a method called ``Unsupervised Online Activity Discovery Using Temporal Behavior Assumption" (UnADevs) based on an online clustering which includes the temporal information of the occurring activities. It is well suited to identify clusters of repeating activities while keeping track of the time interval of discovered activity clusters.
+
+Most of the works in the area of human activity recognition involves smartphones, which have many built-in sensors  which can generate diverse signal shapes given the phone's position. These signals can be used to recognize many different human activities. Existing works have used many different combinations of the sensors and machine learning techniques, but are primarily focused on identifying base activities (sitting, running), while our method is designed to characterize human activity patterns and identify how these patterns change over time.
+
+\subsection{Multivariate Time Series Segmentation}
+Time series segmentation has been an area of interest for many research communities, including signal processing, pattern recognition, machine learning and language processing. 
+% Time series segmentation with multi-variables adds new challenges to segment definition. Many have introduced approaches like statistical latent processing models, clustering algorithms, dynamic programming to likely address the segmentation issue in different fields. 
+%
+Abonyi et al.~\cite{abonyi2005} presented fuzzy clustering as one such approach but it requires clusters to be contiguous in time. It uses probabilistic PCA models to measure homogeneity of the segments and fuzzy sets. To overcome this limitation, Wang et al. proposed an improved unsupervised method~\cite{wang2012} that can automatically determine the optimal segmentation order. 
+
+Dynamic programming (DP) algorithms have been widely explored to automatically segment multivariate time series~\cite{guo2015, anastasiu2015}. 
+% The advantage is that it can recursively formulate segmentation errors of univariate time series to multivariate time series. Hence making dynamic programming a computationally viable approach for this problem. 
+In one example, Anastasiu et al.~\cite{anastasiu2015} proposed an algorithm for optimal cross-user segmentation for identifying how users use their computers and how that usage changes over time. Our method is similar in scope, but focused on automatic discovery of human activity patterns. A similar dynamic programming based approach was proposed by Guo et al.~\cite{guo2016}. It initially applies fuzzy clustering to predefined segments and uses dynamic time warping to determine distances between non-equal length series. Segments are then iteratively updated through a segmentation objective function optimized using dynamic programming.
+
+% Majority of the above works focus on activity detection based on various sensors, data collection methods and, supervised/unsupervised models. A handful of research have also gone into time series segmentation in various domains. In this project, we propose to implement a multivariate time-series segmentation on human activities data collected over time, to classify activity patterns for a group of users.
+
+\subsection{Where to Find More Information About Literature Reviews}\label{sec:literature_review:more_info}
+
+This section will contain some relevant references on this topic.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sections}\label{sec:sections}
+A thesis is generally broken down into sections that encompass a different area of the work. For example, the first section in a thesis is generally an ``Introduction", which lays out what the research is about. The top-level sections in the thesis are called chapters and always start at the top of a page. When referring to a top-level section, one should mention it as Chapter~\ref{sec:introduction}, where the number is the section/chapter number. The numbers, as with all references in the thesis, should never be written out. Rather, use LaTeX reference macros, which will be automatically replaced with appropriate numbers when compiling the thesis document. Chapter~\ref{sec:latex}, as well as the source code of this document, has many examples of references.
+
+A thesis section can be further broken down into subsections. One should use at most 4 section levels in a thesis. This paragraph is in the 1st section level, ``section". We will create 3 more subsection levels. The 2nd section level is created using the ``subsection" macro. The 3rd section level is created using the ``subsubsection" macro. However, the 4th section level is created using the ``paragraph" macro. Note that the IEEE paragraph style is slightly different than the section styles, as the paragraph caption will be in-line with the text of the section and will be automatically ended with a colon. Students should note that more than 3 subheadings (4 section levels) becomes confusing to the reader and should thus avoid further breakdown of paragraph sections.
+
+\subsection{Second section level}
+This is an example of the 2nd level of a section.
+
+\subsubsection{Third section level}
+This is an example of the 3rd level of a section.
+
+\paragraph{Fourth section level}
+This is an example of the 4th level of a section.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Other Sections}\label{sec:appropriate_label}
+\section{Example Sections}\label{sec:example_sections}
+
+In this chapter we discuss a possible set of chapters for a thesis. The example is somewhat specific to the author's field of research (Data Science). Students should, in general, consult with their adviser on the list of chapters that they should include in their thesis.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Mini-introduction to LaTeX}\label{sec:latex}
+
+This chapter needs to be filled out. For now, it contains some very basic examples.
 
 
+\subsection{Equations}\label{sec:latex:equations}
+
+Equations and mathematical formulas can be included in-line, within the text, for example when explaining that $\norm{\vec x}_2$ signifies the $\ell_2$ norm of a vector, as long as the included math formula or symbols are short (less than half a line). For longer formulas, or formulas that need to be referenced later in the text, one should use the \texttt{equation} macro or related macros, e.g., \texttt{align}. For example, the dot-product of two vectors, $\vec x$ and $\vec y$, is defined as
+\begin{equation}\label{eq:dot-product}
+    \langle \vec x, \vec y \rangle = \vec{x}^T\vec{y} = \sum_{j=1}^m x_j\times y_j.
+\end{equation}
+Note that equations can be assigned labels and referenced throughout the text. However, unlike figures and tables (see next sections), the equation should be defined prior to its reference. Now that we can defined the formula for the vector dot-product, we can now refer to Equation~\ref{eq:dot-product} to remind readers of its definition.
+
+\subsection{Figures}\label{sec:latex:figures}
+
+Figures should contain a caption at the bottom. The caption is a sentence or phrase that describes the content of the figure. As such, it should start with a capital letter and end with a period. The caption is not a title, so subsequent words after the first word should not be capitalized unless they are proper names. A figure should be introduced in the text prior to its inclusion in the text. When referring to the figure, make use of the  \texttt{{\textbackslash}figurename} macro, provided by the IEEE style, to ensure style compliance. Additionally, use a non-breaking space character to connect the \figurename~text with the number assigned to the figure reference. This will ensure that \figurename~and the reference will be included on the same line. For example, \figurename~\ref{fig:proj-arch} introduces our project architecture. Note that font sizes in figures and tables may be smaller than the rest of the thesis. However, they should be readable.
+
+\begin{figure}[tbh]
+  \centering
+  \includegraphics[width=0.85\textwidth]{figures/proj-arch.pdf}
+  \caption{Project architecture.}
+  \label{fig:proj-arch}
+\end{figure}
+
+
+\subsection{Tables}\label{sec:latex:tables}
+
+Tables should contain a caption at the top. Unlike figures, the caption in the table is the table title, and it should be capitalized accordingly. The table should be presented in the text prior to its inclusion in the text. Moreover, references to tables should follow the same directions as those for figures, except use the \texttt{{\textbackslash}tablename} macro. For example, \tablename~\ref{tbl:dataset} introduces statistics about the dataset used in our analysis.
+
+\begin{table}[tb]
+\caption{Dataset Characteristics}
+\label{tbl:dataset}
+\centering
+\begin{tabular}{c|c|c|c|c|c}
+\hline
+\textbf{Name} & \textbf{Duration (h)} & \textbf{Activities} & \textbf{Subjects}  & \textbf{Sensors} & \textbf{Frequency (Hz)} \\ 
+\hline
+JSI-ADL & 18.8 & 14 & 10 & 2 & 50\\ 
+REALDISP & 9 & 33 & 17 & 2 & 50\\ 
+UCI-HAR & 1.5 & 6 & 30 & 2 & 50\\ 
+Ours & 1500 & 14 & 24 & 2 & 20\\ 
+\hline
+\end{tabular}
+\end{table}
+
+
+\subsection{Algorithms}\label{sec:latex:algorithms}
+
+
+LaTeX provides powerful macros for writing algorithms. Note that labels can be included within the algorithm, which allows the writer to refer to specific lines in the algorithm. The algorithm should be introduced first. Note that the label referring to the whole algorithm is placed right after the caption. Similar to a table, the caption is a title and should be capitalized accordingly. For example, Algorithm~\ref{alg:proj-motif} describes the process for producing a normalized 2-hop left-projection of a bipartite graph described by the vertex sets $V^1$ and $V^2$ and the edge set $E$. Long algorithms (greater than half a page) should be relegated to the Appendix.
+
+\begin{algorithm}
+\caption{The Normalized 2-hop Left-Projection Algorithm}\label{alg:proj-motif}
+\small
+\begin{algorithmic}[1]
+\Procedure{Project}{$V^1,V^2,E$}\Comment{Construct the left projection $G^1$}
+%%
+\item[] \quad\; // Initialize and compute degree vectors.
+\For {$(v^1_i, v^2_j) \in E$} \Comment{Count neighbors}
+\State $\lambda_n(i) \gets \lambda_n(i) + 1$
+\State $\lambda_m(j) \gets \lambda_m(j) + 1$
+\EndFor
+\item[] \quad\; // SpGEMM
+%%
+\For {$v^1_i \in V^1$} \label{alg:proj-motif-spgemm1}
+\State $acc(:) \gets 0$ \Comment{Initialize output row accumulator data structure}
+\For {$v^2_k \in \Gamma(v^1_i)$}
+\State $l \gets  (1/\lambda_n(i)) \times \times w_{i,k} \times (1/\lambda_m(k))$ \label{alg:proj-motif-lk}
+\For {$v^1_j \in \Gamma(v^2_k)$}
+\If {$v^1_j \ne v^1_i$} \Comment{Avoid computing output diagonal}
+\State $acc(j) \gets acc(j) + l \times w_{j,k}$ \label{alg:proj-motif-accum}
+\EndIf
+\EndFor
+\EndFor
+\State $C(i,:) = acc(:)$
+\EndFor\label{alg:proj-motif-spgemm2}
+\item[] \quad\; // Normalize rows of $C$
+%%
+\For {$i = 1, \ldots, |V^1|$}\label{alg:proj-motif-norm1}
+\State $n_i \gets 0$
+\For {$j = 1, \ldots, |V^2| \text{ s.t. } C(i,j) > 0$}
+\State $n_i \gets n_i + \text{abs}(C(i,j))$
+\EndFor
+\For {$j = 1, \ldots, |V^2| \text{ s.t. } C(i,j) > 0$}
+\State $C(i,j) \gets C(i,j) / n_i$
+\EndFor
+\EndFor\label{alg:proj-motif-norm2}
+\State \textbf{return} $C$\Comment{Edge set weight matrix for $G^1$}
+\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+After introducing the algorithm, one can then refer to sections of the algorithm in the process of describing it in the text. For example, note that line~\ref{alg:proj-motif-accum} denotes the accumulation of projection weights for a vertex $v_i^1$ in $V^1$. For theses that contain many mathematical symbols, it is a good idea to provide the reader with a reference for the meaning of these symbols. This table is generally included in the preliminary chapters, after the introduction. We will include an example here. \tablename~\ref{tbl:notation-g} provides a reference for notation used throughout the paper that the algorithm above is included in.
+
+\begin{table}[tb]
+\caption {Graph and Projection Notation} \label{tbl:notation-g}
+\centering
+\small
+ \begin{tabular}{l l}
+ \hline
+ \textbf{Symbol} & \textbf{Meaning} \\ 
+ \hline
+ $G$ & A graph topology. \\
+ $V^1$, $V^2$ & The left and right node partitions in a bipartite graph. \\
+ $E$ & The set of edges in $G$. \\
+ $|X|$ & The cardinality of set $X$. \\
+ $v^1_i \in V^1$ & A vertex in the left node partition $V^1$. \\
+ $v^2_j \in V^2$ & A vertex in the right node partition $V^2$. \\
+ $(v^1_i, v^2_j, w_{i,j})\in E$ & The edge connecting nodes $v^1_i$ and $v^2_j$ with weight $w_{i,j}$ in graph $G$. \\
+ $\Gamma(v^1_i)$ & The set of vertices in $V^2$ adjacent to $v^1_i$, i.e., its neighborhood. \\
+ $\lambda_n,\lambda_m$ & Node degree vectors for the left and right partitions.\\
+ $A \in \mathbb{R}^{n\times m}$ & The edge weight matrix for the bipartite graph $G$; $A(i,j) = w_{i,j}$. \\
+ $B$ & Weighted adjacency matrix for graph $G$.\\
+ \hline
+ $G^1 = (V^1, E^1)$ & The left projection graph.\\
+ $G^2 = (V^2, E^2)$ & The right projection graph.\\
+ $G^b = (V, E^b)$ & The biprojection graph.\\
+ $(v^1_i, v^1_j, s^1_{i,j})\in E^1$ & The edge connecting $v^1_i$ and $v^1_j$ with weight $s^1_{i,j}$ in the left projection graph. \\
+ $W^1$ & Edge weight matrix for the left projection graph; $W^1(i,j) = s^1_{i,j}$.\\
+ $W^2$ & Edge weight matrix for the right projection graph; $W^2(i,j) = s^2_{i,j}$.\\
+ $W$ & Weighted adjacency matrix for the bi-projection graph of $G$.\\
+ \hline
+ \end{tabular}
+\end{table}
+
+
+\subsection{Citations}\label{sec:latex:citations}
+This is an example citation for a work by Anastasiu and Karypis~\cite{anastasiu-dsaa2016}. Note the non-breaking space character (\textasciitilde) between the word before the citation and the \textit{{\textbackslash}cite} command. It gets translated into a space, and does not allow LaTeX to print the citation on a different line than the word it is connected to. This, of course, does not work if you put a space between the word and the non-breaking space character, e.g., ``Karypis \textasciitilde{\textbackslash}cite\{anastasiu-dsaa2016\}".
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Writing Advice}\label{sec:writing}
+
+This chapter contains a list of common writing mistakes that students tend to make when writing theses. Students should read the list carefully, in addition to the examples provided by GUP in their thesis guidelines, and guard against making these mistakes in their theses.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Future Work}\label{sec:future_work}
 
-
+First of all, we plan to finish this template example and, once the style/template has been approved by GUP, disseminate it to others in the CoE. We plan to invite contributions from other CMPE and CoE faculty in improving this document, with the goal to include the most useful information to help students succeed in writing their thesis.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}\label{sec:conclusions}
+This macro example thesis was written as a guide to CMPE and CoE students for writing quality theses in LaTeX. The provided template, along with this guide, should make the task of complying with GUP formatting requirements much easier for students. The CMPE LaTeX thesis template and this document are a work in progress. The reader is invited to participate in improving both via Git pull requests. The project can be found at \url{https://github.com/davidanastasiu/thesis_template-SJSU_CMPE}.
 
-
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
