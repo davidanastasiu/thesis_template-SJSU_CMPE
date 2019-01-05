@@ -1,5 +1,5 @@
 %%
-%% SJSUthesis.cls 2018/06/16 version V0.1b
+%% SJSUthesis.cls 2018-12-21 version V0.2
 %%   derived from IEEEtran.cls 2015/08/26 version V1.8b
 %% 
 %% This is an IEEEtran-based Masters Thesis and Project class for students 
@@ -10,7 +10,7 @@
 %% http://davidanastasiu.net
 %%
 %%
-%% Current maintainer (V0.1b): David C. Anastasiu
+%% Current maintainer (V0.2): David C. Anastasiu
 %%                                     See:
 %%                                     http://davidanastasiu.net/
 %%                                     for current contact information.
@@ -95,7 +95,7 @@
 %   required, but the abstract section is.
 %
 
-\ProvidesClass{SJSUthesis}[2018/06/16 V0.1b by David C. Anastasiu]
+\ProvidesClass{SJSUthesis}[2018-12-21 V0.2 by David C. Anastasiu]
 \typeout{-- Derived from the "IEEEtran" class version V1.8b by Michael Shell.}
 \typeout{-- See the "IEEEtran_HOWTO" manual for usage information.}
 \typeout{-- http://davidanastasiu.net/}
@@ -364,26 +364,25 @@
 \ifCLASSOPTIONconference
 % compsoc conference
 \def\section{\@startsection{section}{1}{\z@}{1\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip}%
-{1\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip}{\normalfont\large\bfseries}}%
+{1\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip}{\normalfont\normalsize\bfseries}}%
 \def\subsection{\@startsection{subsection}{2}{\z@}{1\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip}%
-{1\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip}{\normalfont\sublargesize\bfseries}}%
+{1\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip}{\normalfont\normalsize\bfseries}}%
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}{1\baselineskip plus 0.25\baselineskip minus 0.25\baselineskip}%
 {0ex}{\normalfont\normalsize\bfseries}}%
 \def\paragraph{\@startsection{paragraph}{4}{2\parindent}{0ex plus 0.1ex minus 0.1ex}%
 {0ex}{\normalfont\normalsize}}%
 \else% compsoc journals
-% use negative top separation as compsoc journals do not indent paragraphs after section titles
+% % use negative top separation as compsoc journals do not indent paragraphs after section titles
 \def\section{\@startsection{section}{1}{\z@}{-1.5ex plus -1.5ex minus -1.5ex}%
-{0.7ex plus 0.5ex minus 0ex}{\normalfont\normalsize}}%
-% Note that subsection and smaller may not be correct for the Computer Society,
-% I have to look up an example.
+{0.7ex plus 0.5ex minus 0ex}{\normalfont\normalsize\bfseries\uppercase}}%
 \def\subsection{\@startsection{subsection}{2}{\z@}{-1.5ex plus -1.5ex minus -1.5ex}%
-{0.7ex plus 0.5ex minus 0ex}{\normalfont\normalsize}}%
+{0.7ex plus 0.5ex minus 0ex}{\normalfont\normalsize\bfseries}}%
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-1.5ex plus -1.5ex minus -1.5ex}%
-{0.7ex plus 0.5ex minus 0ex}{\normalfont\normalsize}}%
+{0.7ex plus 0.5ex minus 0ex}{\normalfont\normalsize\itshape}}%
 \def\paragraph{\@startsection{paragraph}{4}{2\parindent}{-0ex plus -0.1ex minus -0.1ex}%
 {0ex}{\normalfont\normalsize}}%
 \fi\fi
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -463,7 +462,7 @@
 
   % Redefine \bibliographystyle and \bibliography to do nothing 
   % They should not be used by the user.
-  \bibliographystyle{IEEEtranS}
+  \bibliographystyle{ieeetr}
   \def\bibliographystyle#1{}
   \let \SJSUbibliography \bibliography
   \def\bibliography#1{}
@@ -507,7 +506,7 @@
     
 \newcommand\entrynumberwithprefix[2]{#1\enspace#2.\hfill}
 \DeclareTOCStyleEntry[
-  entrynumberformat=\entrynumberwithprefix{Figure},
+  entrynumberformat=\entrynumberwithprefix{Fig.},
   beforeskip=1em plus 1pt,
   dynnumwidth,
   numsep=1em
@@ -530,7 +529,6 @@
 	{{ \singlespace\@starttoc{lot} }}%
     \addcontentsline{toc}{section}{\listtablename}%
     }% end \listoftables
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -678,9 +676,12 @@
   \vfill
   \begin{center}
   \doublespace % ZSH per thesis guidelines
-  \copyright~{\@copyrightyear}\\
-  {\@author}\\
-  ALL RIGHTS RESERVED\\
+  \copyright~{\@copyrightyear}
+  
+  {\@author}
+  
+  ALL RIGHTS RESERVED
+  
   \vspace{0.5\baselineskip}
   \end{center}
   \newpage
@@ -757,8 +758,8 @@
   \pagestyle{empty}
   \vspace*{-1.5\baselineskip}
   \section*{\centering {\normalfont\normalsize\singlespace ABSTRACT\\
-  			\vspace{0.5\baselineskip} \MakeUppercase{\@title}\\ 
-            by \@author}}
+  			\vspace{0.5\baselineskip} {\MakeUppercase{\@title}}\\ 
+            \MakeLowercase{by} \@author}}
   \input{\@abstract}
 }}
 
@@ -881,7 +882,7 @@
   \fi
   % open the aux file for the bibliography
   \immediate\openout12=\@bibliofile.aux
-  \immediate\write12{\string\bibstyle{IEEETran}}
+  \immediate\write12{\string\bibstyle{ieeetr}}
   \immediate\write12{\string\bibdata{\@references}}
   \newcounter{@tmppage}
   \newlength{\@tmpheighta}

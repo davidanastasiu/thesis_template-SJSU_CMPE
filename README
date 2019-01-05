@@ -11,14 +11,16 @@ thesis. Additionally, note that GUP is very strict on grammar and spelling mista
 
 The style if offered free of charge and the author does not guarantee it is
 free from error. Unless required by applicable law or agreed to in writing, 
-the template and style are distributed on an ”AS IS” BASIS, WITHOUT WARRANTIES OR
+the template and style are distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
 CONDITIONS OF ANY KIND, either express or implied.
 
-The thesis style is based on the IEEE compsoc style, which is included in the 
-distribution. GUP will require evidence of that style be submitted along with the thesis.
-I have included a sample IEEE compsoc document under the evidence directory.
+The style, which is based on the IEEE compsoc style, has been approved by GUP for use 
+by Computer Engineering students in Fall 2018. When submitting your thesis, make sure
+to specify you are using the Computer Engineering LaTeX style.
 
 Corrections and improvements to the style are welcome. Send me a pull request.
+
+Updates: see changelog.txt
 
 ***************************************************************************
 Following is the README from the IEEE style.

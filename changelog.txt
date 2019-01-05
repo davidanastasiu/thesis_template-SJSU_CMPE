@@ -1,12 +1,22 @@
 ********
- 2018/09/29 v1.0 of the Computer Engineering Thesis Template
+ v1.0, 2018/09/29 - Initial release
 by David C. Anastasiu
 http://davidanastasiu.net
 
- 1) Created template and the SJSUthesis class to match current SJSU GUP requirements. Additional
+  - Created template and the SJSUthesis class to match current SJSU GUP requirements. Additional
     changes will no doubt be necessary. Note that the class extends the IEEE compsoc
     class and will require evidence of that style be submitted along with the thesis.
     I have included a sample IEEE compsoc document under the evidence directory.
+
+ v1.0b, 2018-12-06, changes by David C. Anastasiu
+  - Fixed reference order to match GUP requirement.
+  - Fixed double-spacing in copyright page.
+
+ v0.2, 2018-12-21, changes by David C. Anastasiu
+  - updated headings to match IEEE style except use same font as thesis
+  - removed extra spaces after headings; fixed other spacing throughout
+  - added sections discussing float placement and expanded discussion on citations
+
 
 
 ********

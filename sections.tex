@@ -1,12 +1,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}\label{sec:introduction}
-``SJSUthesis" is a LaTeX class created by David C. Anastasiu for Masters thesis authors from the College of Engineering (CoE) at San Jos\'{e} State University (SJSU). It follows the current Graduate and Undergraduate Programs (GUP) thesis guidelines, currently found at \url{http://www.sjsu.edu/gup/gradstudies/thesis/index.html}, and attempts to simplify the formatting of theses for students. Students should, however, read the current GUP requirements carefully and rectify any style discrepancies before submitting their theses. Additionally, note that GUP is very strict on grammar and spelling mistakes.
+``SJSUthesis'' is a LaTeX class created by David C. Anastasiu for Masters thesis authors from the College of Engineering (CoE) at San Jos\'{e} State University (SJSU). It follows the current Graduate and Undergraduate Programs (GUP) thesis guidelines, currently found at \url{http://www.sjsu.edu/gup/gradstudies/thesis/index.html}, and attempts to simplify the formatting of theses for students. Students should, however, read the current GUP requirements carefully and rectify any style discrepancies before submitting their theses. Additionally, note that GUP is very strict on grammar and spelling mistakes.
 
-The present ``thesis" serves as a visual example of what the finished thesis product should look like. In addition, it provides some guidance on how to use the SJSUthesis style, the provided LaTeX template project, and LaTeX in general to produce a quality thesis that complies with GUP requirements. LaTeX, in combination with the provided style, automate many of the style aspects of the thesis, as long as students do not modify the style of introduce new style elements manually in the text. For example, one can make all section titles bold by simply putting the text within a \texttt{{\textbackslash}textbf} block. However, that would break the style and cause the thesis to be returned for edits by GUP. Students are thus, once again, urged to refrain from style modifications and to double-check style compliance against the GUP thesis guide before submitting their theses.
+The present ``thesis'' serves as a visual example of what the finished thesis product should look like. In addition, it provides some guidance on how to use the SJSUthesis style, the provided LaTeX template project, and LaTeX in general to produce a quality thesis that complies with GUP requirements. LaTeX, in combination with the provided style, automate many of the style aspects of the thesis, as long as students do not modify the style of introduce new style elements manually in the text. For example, one can make all section titles bold by simply putting the text within a \texttt{{\textbackslash}textbf} block. However, that would break the style and cause the thesis to be returned for edits by GUP. Students are thus, once again, urged to refrain from style modifications and to double-check style compliance against the GUP thesis guide before submitting their theses.
 
 Throughout the thesis, we will make use of tables and figures from some of my own papers and my students' theses. These tables and figures will likely be taken out of context and should not be considered relevant to the topic of this thesis. They are simply provided as examples for how to properly include these elements in a thesis document.
 
-The remainder of this thesis is structured as follows. First, in Chapter~\ref{sec:literature_review}, we will introduce the reader to the task of reviewing literature that is relevant to the chosen topic of study, with the goal of identifying the current state-of-the-art method or system that potentially solves the problem at hand. This is the basis of all research projects, as we should not ``re-invent the wheel" and try not to repeat mistakes made by others. Chapter~\ref{sec:appropriate_label} introduces an example of other chapters one may include in the thesis. Chapter~\ref{sec:latex} serves as a brief introduction to writing documents in the TeX macro language. We provide a list of writing tips, generally collected from correcting student theses over the years, in Chapter~\ref{sec:writing}. Finally, Chapter~\ref{sec:future_work} describes to-do items envisioned for this project and Chapter~\ref{sec:conclusions} concludes this thesis.
+The remainder of this thesis is structured as follows. First, in Chapter~\ref{sec:literature_review}, we will introduce the reader to the task of reviewing literature that is relevant to the chosen topic of study, with the goal of identifying the current state-of-the-art method or system that potentially solves the problem at hand. This is the basis of all research projects, as we should not ``re-invent the wheel'' and try not to repeat mistakes made by others. Chapter~\ref{sec:example_sections} introduces an example of other chapters one may include in the thesis. Chapter~\ref{sec:latex} serves as a brief introduction to writing documents in the TeX macro language. We provide a list of writing tips, generally collected from correcting student theses over the years, in Chapter~\ref{sec:writing}. Finally, Chapter~\ref{sec:future_work} describes to-do items envisioned for this project and Chapter~\ref{sec:conclusions} concludes this thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Literature Review}\label{sec:literature_review}
@@ -20,7 +20,7 @@ In this chapter, we review some supervised and unsupervised techniques that are 
 \subsection{Activity Recognition}
 Appropriate datasets are hard to find for human activity recognition (HAR) research, which lead many authors to collect their own data using several sensors. Chen and Shen~\cite{chen2017} presented performance analysis based on the placement of smartphones on various parts of a subject's body. In their data collection phase, they captured data from a combination of different sensors, e.g., only accelerometer versus combined accelerometer and gyroscope, from smartphones attached to the forearm, abdomen, or legs of the subject, with the ultimate goal of classifying the type of activity being performed.
 %%
-Su et al.~\cite{su2014} computed features in two different domains: time and frequency. In the time domain, they calculated mean, max-min, standard deviation, correlation, and signal magnitude area (SMA). In the frequency domain, they calculated energy, entropy, binned distribution, and the time difference between peaks. They tested a number of supervised learning methods for activity recognition, such as using decision tree, na\"{i}ve Bayes, and support vector machine (SVM) classification models. 
+Su et al.~\cite{su2014} computed features in two different domains: time and frequency. In the time domain, they calculated mean, max-min, standard deviation, correlation, and signal magnitude area (SMA). In the frequency domain, they calculated energy, entropy, binned distribution, and the time difference between peaks. They tested a number of supervised learning methods for activity recognition, such as using decision tree, na\''{i}ve Bayes, and support vector machine (SVM) classification models. 
 
 % \subsection{Supervised Approaches}
 Anguita et al.~\cite{anguita2013} focused on labeled data collection using built-in smartphone sensors (accelerometer, gyroscope at 50Hz) with six predefined activity labels. To validate the quality of the dataset, they used the SVM classifier, after filtering noise, and feature mapping to a randomly-split test/train dataset. Kim et al.~\cite{kim2010} summarized pattern discovery in supervised HAR approaches, including hidden Markov model (HMM), linear chain conditional random fields (CRF), and skip-chain CRF (SCCRF).
@@ -29,7 +29,7 @@ Several approaches have been devised for unsupervised learning for human activit
 
 Chamroukhi et al.~\cite{chamroukhi2013} described a method to identify hidden discrete logistic processes that maximize the likelihood of data being observed, which they trained via a dedicated expectation maximization (EM) algorithm. Similarity, Kwon et al.~\cite{kwon2014} compared various clustering algorithms for labeling a mixed bag of known and unknown activities. Results showed that given a number of activities, GMM seems to outperform $k$-means and hierarchical clustering for a given known number of activities, but DBSCAN~\cite{ester1996} proved the best choice when the number of activities is unknown.
 
-Wang et al.~\cite{wang2014} discussed linear dynamical systems for human activity recognition, which uses $k$-medoids clustering and a bag-of-systems (BoS) to predict activities involving motion, such as jumping and running. Ronao and Cho~\cite{ronao2015} proposed using a deep convolutional neural networks (DCNN) to extract features from the time series data. They found that, as the number of layers increases, the classification performance improved but the complexity of derived features decreased. Analysis of additional algorithms showed that DCNNs with hand designed features yield better results. Gjoreski and Roggen~\cite{gjoreski2017} proposed a method called ``Unsupervised Online Activity Discovery Using Temporal Behavior Assumption" (UnADevs) based on an online clustering which includes the temporal information of the occurring activities. It is well suited to identify clusters of repeating activities while keeping track of the time interval of discovered activity clusters.
+Wang et al.~\cite{wang2014} discussed linear dynamical systems for human activity recognition, which uses $k$-medoids clustering and a bag-of-systems (BoS) to predict activities involving motion, such as jumping and running. Ronao and Cho~\cite{ronao2015} proposed using a deep convolutional neural networks (DCNN) to extract features from the time series data. They found that, as the number of layers increases, the classification performance improved but the complexity of derived features decreased. Analysis of additional algorithms showed that DCNNs with hand designed features yield better results. Gjoreski and Roggen~\cite{gjoreski2017} proposed a method called ``Unsupervised Online Activity Discovery Using Temporal Behavior Assumption'' (UnADevs) based on an online clustering which includes the temporal information of the occurring activities. It is well suited to identify clusters of repeating activities while keeping track of the time interval of discovered activity clusters.
 
 Most of the works in the area of human activity recognition involves smartphones, which have many built-in sensors  which can generate diverse signal shapes given the phone's position. These signals can be used to recognize many different human activities. Existing works have used many different combinations of the sensors and machine learning techniques, but are primarily focused on identifying base activities (sitting, running), while our method is designed to characterize human activity patterns and identify how these patterns change over time.
 
@@ -50,19 +50,21 @@ In one example, Anastasiu et al.~\cite{anastasiu2015} proposed an algorithm for 
 This section will contain some relevant references on this topic.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Sections}\label{sec:sections}
-A thesis is generally broken down into sections that encompass a different area of the work. For example, the first section in a thesis is generally an ``Introduction", which lays out what the research is about. The top-level sections in the thesis are called chapters and always start at the top of a page. When referring to a top-level section, one should mention it as Chapter~\ref{sec:introduction}, where the number is the section/chapter number. The numbers, as with all references in the thesis, should never be written out. Rather, use LaTeX reference macros, which will be automatically replaced with appropriate numbers when compiling the thesis document. Chapter~\ref{sec:latex}, as well as the source code of this document, has many examples of references.
+\section{Sections and Headings}\label{sec:sections}
+A thesis is generally broken down into sections, each section encompassing a different area of the work. For example, the first section in a thesis is generally an ``Introduction'', which lays out what the research is about. The top-level sections in the thesis are called chapters and always start at the top of a page. When referring to a top-level section, one should mention it as Chapter~\ref{sec:introduction}, where the number is the section/chapter number. The numbers, as with all references in the thesis, should never be written out. Rather, use LaTeX reference macros, which will be automatically replaced with appropriate numbers when compiling the thesis document. Chapter~\ref{sec:latex}, as well as the source code of this document, has many examples of references.
 
-A thesis section can be further broken down into subsections. One should use at most 4 section levels in a thesis. This paragraph is in the 1st section level, ``section". We will create 3 more subsection levels. The 2nd section level is created using the ``subsection" macro. The 3rd section level is created using the ``subsubsection" macro. However, the 4th section level is created using the ``paragraph" macro. Note that the IEEE paragraph style is slightly different than the section styles, as the paragraph caption will be in-line with the text of the section and will be automatically ended with a colon. Students should note that more than 3 subheadings (4 section levels) becomes confusing to the reader and should thus avoid further breakdown of paragraph sections.
+A thesis section can be further broken down into subsections. One should use at most 4 section levels in a thesis. This paragraph is in the 1st section level, ``section''. We will create 3 more subsection levels. The 2nd section level is created using the ``subsection'' macro. The 3rd section level is created using the ``subsubsection'' macro. However, the 4th section level is created using the ``paragraph'' macro. Note that the IEEE paragraph style is slightly different than the section styles, as the paragraph caption will be in-line with the text of the section and will be automatically ended with a colon. Students should note that more than 3 subheadings (4 section levels) becomes confusing to the reader and should thus avoid further breakdown of paragraph sections.
 
-\subsection{Second section level}
-This is an example of the 2nd level of a section.
+Note that the section header is written in title case, though it appears in the text as uppercase. Students should not deviate from using title case, as it will change the appearance of the section title in the table of contents. The section title should be written in title case.
 
-\subsubsection{Third section level}
-This is an example of the 3rd level of a section.
+\subsection{Second Section Level}
+This is an example of the 2nd level of a section. The subsection title should be written in title case.
+
+\subsubsection{Third Section Level}
+This is an example of the 3rd level of a section. The subsubsection title should be written in title case.
 
 \paragraph{Fourth section level}
-This is an example of the 4th level of a section.
+This is an example of the 4th level of a section. Note that the paragraph title should be written in sentence case, unlike the higher level titles.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -89,9 +91,9 @@ Note that equations can be assigned labels and referenced throughout the text. H
 
 Figures should contain a caption at the bottom. The caption is a sentence or phrase that describes the content of the figure. As such, it should start with a capital letter and end with a period. The caption is not a title, so subsequent words after the first word should not be capitalized unless they are proper names. A figure should be introduced in the text prior to its inclusion in the text. When referring to the figure, make use of the  \texttt{{\textbackslash}figurename} macro, provided by the IEEE style, to ensure style compliance. Additionally, use a non-breaking space character to connect the \figurename~text with the number assigned to the figure reference. This will ensure that \figurename~and the reference will be included on the same line. For example, \figurename~\ref{fig:proj-arch} introduces our project architecture. Note that font sizes in figures and tables may be smaller than the rest of the thesis. However, they should be readable.
 
-\begin{figure}[tbh]
+\begin{figure}[!htb]
   \centering
-  \includegraphics[width=0.85\textwidth]{figures/proj-arch.pdf}
+  \includegraphics[width=0.7\textwidth]{figures/proj-arch.pdf}
   \caption{Project architecture.}
   \label{fig:proj-arch}
 \end{figure}
@@ -101,7 +103,7 @@ Figures should contain a caption at the bottom. The caption is a sentence or phr
 
 Tables should contain a caption at the top. Unlike figures, the caption in the table is the table title, and it should be capitalized accordingly. The table should be presented in the text prior to its inclusion in the text. Moreover, references to tables should follow the same directions as those for figures, except use the \texttt{{\textbackslash}tablename} macro. For example, \tablename~\ref{tbl:dataset} introduces statistics about the dataset used in our analysis.
 
-\begin{table}[tb]
+\begin{table}[!htb]
 \caption{Dataset Characteristics}
 \label{tbl:dataset}
 \centering
@@ -117,13 +119,11 @@ Ours & 1500 & 14 & 24 & 2 & 20\\
 \end{tabular}
 \end{table}
 
-
 \subsection{Algorithms}\label{sec:latex:algorithms}
-
 
 LaTeX provides powerful macros for writing algorithms. Note that labels can be included within the algorithm, which allows the writer to refer to specific lines in the algorithm. The algorithm should be introduced first. Note that the label referring to the whole algorithm is placed right after the caption. Similar to a table, the caption is a title and should be capitalized accordingly. For example, Algorithm~\ref{alg:proj-motif} describes the process for producing a normalized 2-hop left-projection of a bipartite graph described by the vertex sets $V^1$ and $V^2$ and the edge set $E$. Long algorithms (greater than half a page) should be relegated to the Appendix.
 
-\begin{algorithm}
+\begin{algorithm}[!htb]
 \caption{The Normalized 2-hop Left-Projection Algorithm}\label{alg:proj-motif}
 \small
 \begin{algorithmic}[1]
@@ -166,7 +166,7 @@ LaTeX provides powerful macros for writing algorithms. Note that labels can be i
 
 After introducing the algorithm, one can then refer to sections of the algorithm in the process of describing it in the text. For example, note that line~\ref{alg:proj-motif-accum} denotes the accumulation of projection weights for a vertex $v_i^1$ in $V^1$. For theses that contain many mathematical symbols, it is a good idea to provide the reader with a reference for the meaning of these symbols. This table is generally included in the preliminary chapters, after the introduction. We will include an example here. \tablename~\ref{tbl:notation-g} provides a reference for notation used throughout the paper that the algorithm above is included in.
 
-\begin{table}[tb]
+\begin{table}[!htb]
 \caption {Graph and Projection Notation} \label{tbl:notation-g}
 \centering
 \small
@@ -197,9 +197,16 @@ After introducing the algorithm, one can then refer to sections of the algorithm
  \end{tabular}
 \end{table}
 
+\subsection{Location of Floats}\label{sec:latex:floats}
+
+Floats (e.g., algorithms, tables and figures) should not follow the IEEE standard of being placed at the top or bottom of the page. As per the GUP thesis guidelines, they must appear right after their reference and not break any paragraphs, i.e., they should be placed in the text, after the paragraph in question. Use the location hint \texttt{[!htb]} to let LaTeX know the float should be placed in between paragraphs. If the float takes up an entire page and the last paragraph on the current page does not fit in its entirety, it should be moved after the float page to avoid breaking the continuity of the paragraph, leaving some blank lines at the end of the current page.
+
+Pages that contain only floats will have floats vertically centered, which will produce additional blank lines between the floats in the page or between a float and the top and bottom of the page. The thesis guidelines specifically prohibit additional white space in the thesis. This case and the one discussed in the previous paragraph are the only acceptable reasons for having extra blank lines in the text.
 
 \subsection{Citations}\label{sec:latex:citations}
-This is an example citation for a work by Anastasiu and Karypis~\cite{anastasiu-dsaa2016}. Note the non-breaking space character (\textasciitilde) between the word before the citation and the \textit{{\textbackslash}cite} command. It gets translated into a space, and does not allow LaTeX to print the citation on a different line than the word it is connected to. This, of course, does not work if you put a space between the word and the non-breaking space character, e.g., ``Karypis \textasciitilde{\textbackslash}cite\{anastasiu-dsaa2016\}".
+When citing papers, it is advisable to collect BibTeX records for the papers that you wish to cite, which will be automatically processed into the correct citation style by the LaTeX/BibTeX compiler. Citing a work by Anastasiu and Karypis~\cite{anastasiu-dsaa2016}, for example, is as simple as writing ``Anastasiu and Karipis\textasciitilde{\textbackslash}cite\{anastasiu-dsaa2016\},'' where \textit{anastasiu-dsaa2016} is the key associated with the paper's BibTeX record in the \textit{references.bib} file. Note the non-breaking space character (\textasciitilde) between the word before the citation and the \textit{{\textbackslash}cite} command. It gets translated into a space, and does not allow LaTeX to print the citation on a different line than the connecting word. This, of course, does not work if you put a space between the word and the non-breaking space character, e.g., ``Karypis \textasciitilde{\textbackslash}cite\{anastasiu-dsaa2016\}''.
+
+When citing papers with a single author, one should refer to the work by citing the author's last name. For example, Anastasiu~\cite{anastasiu-idsc2017} used a combination of heuristic candidate selection and search space filtering to efficiently identify approximate nearest neighbors. When the work has two authors, both authors should be referenced by their last name, as in the previous example of the work by Anastasiu and Karypis~\cite{anastasiu-dsaa2016}. Finally, if there are more than two authors, one should reference the first author's last name, followed by the phrase \textit{et al.}, which is short for the Latin \textit{et alia} and means ``and others''. Note the placement of the period. As an example, Kapoor et al.~\cite{kapoor-fie2018} discuss the benefits of competitive active learning in engineering education. Note that it is not necessary to mention authors by last name when listing multiple works as examples or evidence of a statement. For example, many recent works have developed filtering-based methods for nearest neighbor graph construction~\cite{anastasiu-icde2014, anastasiu2015, anastasiu-sc2015, anastasiu-sc2016}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
