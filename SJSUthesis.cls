@@ -868,7 +868,7 @@
 % Allow for wide margins in the project
 \def\widemargins{
   \if@optwidemargins
-	\newgeometry{left=0.75in,right=0.75in,top=0.75in,bottom=0.75in}
+	\newgeometry{left=1.25in,right=1.00in,top=1.25in,bottom=1.25in}
   \fi
 }
 
@@ -899,7 +899,7 @@
     % Reset back to twocolumn and wide margins if need be
     \iftwocol \twocolumn \fi
     \widemargins
-    \newgeometry{left=1.5in,right=1.05in,top=1.25in,bottom=1.25in}
+    \newgeometry{left=1.25in,right=1.00in,top=1.25in,bottom=1.25in}
     % Add page break after each section
     \let\oldsection\section
 	\renewcommand\section{\clearpage\oldsection}
